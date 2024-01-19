@@ -1,0 +1,26 @@
+name: Build Artifact
+run-name: ${{ github.actor }} is building artifact
+
+on: 
+  workflow_dispatch:
+
+jobs: 
+  build_artifact: 
+    env: # Or as an environment variable
+      REACT_APP_SAMPLE_ENV: ${{ secrets.REACT_APP_SAMPLE_ENV }}
+      REACT_APP_TEST_NON_SENSITIVE: ${{ $REACT_APP_TEST_NON_SENSITIVE }}
+
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: build
+        run: npm run build
+      
+      - name: save artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: save build directory
+          path: |
+            build
+
+        

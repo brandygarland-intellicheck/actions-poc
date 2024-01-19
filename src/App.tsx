@@ -11,6 +11,8 @@ function App() {
         >
           {process.env.REACT_APP_SAMPLE_ENV}
         </h1>
+
+        <p>{process.env.REACT_APP_TEST_NON_SENSITIVE}</p>
       </header>
     </div>
   );
