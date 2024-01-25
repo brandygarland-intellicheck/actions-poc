@@ -6,7 +6,7 @@ on:
 
 jobs: 
   build_artifact: 
-    env: # Or as an environment variable
+    env:
       REACT_APP_SAMPLE_ENV: ${{ secrets.REACT_APP_SAMPLE_ENV }}
       REACT_APP_TEST_NON_SENSITIVE: ${{ vars.REACT_APP_TEST_NON_SENSITIVE }}
 
