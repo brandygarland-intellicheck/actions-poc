@@ -8,7 +8,7 @@ jobs:
   build_artifact: 
     env: # Or as an environment variable
       REACT_APP_SAMPLE_ENV: ${{ secrets.REACT_APP_SAMPLE_ENV }}
-      REACT_APP_TEST_NON_SENSITIVE: ${{ secrets.REACT_APP_TEST_NON_SENSITIVE }}
+      REACT_APP_TEST_NON_SENSITIVE: ${{ variables.REACT_APP_TEST_NON_SENSITIVE }}
 
     runs-on: ubuntu-latest
 
@@ -16,9 +16,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-
       - name: install
         run: npm ci
+
+      - name: compile css
+        run: bash src/scss/runScss.bash
 
       - name: build
         run: npm run build
@@ -26,7 +28,7 @@ jobs:
       - name: save artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: save build directory
+          name: poc-build-artifacts
           path: |
             build
 
