@@ -19,6 +19,9 @@ jobs:
       - name: install
         run: npm ci
 
+      - name: install sass
+        run: npm install -g sass
+
       - name: compile css
         run: bash src/scss/runScss.bash
 
