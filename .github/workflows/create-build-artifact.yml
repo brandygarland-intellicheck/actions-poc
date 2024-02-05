@@ -27,7 +27,7 @@ jobs:
 
       - name: test file-build.js
         run: |
-          touch public/runtime-env.js
+          touch $HOME/public/runtime-env.js
           cat <<EOF > $HOME/public/runtime-env.js
           window.__RUNTIME_CONFIG__ = {
               "REACT_APP_SAMPLE_ENV": "$REACT_APP_SAMPLE_ENV",
@@ -39,7 +39,7 @@ jobs:
       
 
       
-      - name: save artifactcls
+      - name: save artifact
         uses: actions/upload-artifact@v4
         with:
           name: poc-build-artifacts
