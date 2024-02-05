@@ -27,6 +27,7 @@ jobs:
 
       - name: test file-build.js
         run: |
+          ls 
           touch $HOME/public/runtime-env.js
           cat <<EOF > $HOME/public/runtime-env.js
           window.__RUNTIME_CONFIG__ = {
