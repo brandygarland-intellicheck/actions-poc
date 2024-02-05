@@ -25,10 +25,21 @@ jobs:
       - name: compile css
         run: bash src/scss/runScss.bash
 
+      - name: test file-build.js
+        run: |
+          touch public/runtime-env.js
+          cat <<EOF > $HOME/public/runtime-env.js
+          window.__RUNTIME_CONFIG__ = {
+              "REACT_APP_SAMPLE_ENV": "$REACT_APP_SAMPLE_ENV",
+              "REACT_APP_TEST_NON_SENSITIVE": "$REACT_APP_TEST_NON_SENSITIVE"
+          };
+
       - name: build
         run: npm run build
       
-      - name: save artifacts
+
+      
+      - name: save artifactcls
         uses: actions/upload-artifact@v4
         with:
           name: poc-build-artifacts
