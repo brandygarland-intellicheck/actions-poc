@@ -28,12 +28,13 @@ jobs:
       - name: test file-build.js
         run: |
           ls 
-          touch $HOME/public/runtime-env.js
+          touch public/runtime-env.js
           cat <<EOF > $HOME/public/runtime-env.js
           window.__RUNTIME_CONFIG__ = {
               "REACT_APP_SAMPLE_ENV": "$REACT_APP_SAMPLE_ENV",
               "REACT_APP_TEST_NON_SENSITIVE": "$REACT_APP_TEST_NON_SENSITIVE"
           };
+          EOF
 
       - name: build
         run: npm run build
